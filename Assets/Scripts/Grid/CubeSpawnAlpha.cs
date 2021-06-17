@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CubeSpawnAlpha : MonoBehaviour
-{
+{/*
     public Transform placebale;
     public GameObject prefab;
     private BaseGrid grid;
@@ -68,5 +68,6 @@ public class CubeSpawnAlpha : MonoBehaviour
 
 
 
-    }
+    }*/
 }
+    

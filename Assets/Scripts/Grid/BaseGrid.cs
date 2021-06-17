@@ -8,16 +8,13 @@ public class BaseGrid
     private int width;
     private int height;
     private int length;
-    private float cellsize;
     public GameObject[,,] gridArray;
 
-    public BaseGrid(int width, int height, int length, float cellsize, Vector3 originPosition)
+    public BaseGrid(int width, int height, int length, Vector3 originPosition)
     {
         this.originPosition = originPosition;
         this.width = width;
         this.height = height;
-
-        this.cellsize = cellsize;
 
         gridArray = new GameObject[width, height, length];
 
@@ -31,7 +28,7 @@ public class BaseGrid
 
     private Vector3 GetWorldPosition(int x, int y, int z)
     {
-        return new Vector3(x, y, z) * cellsize + originPosition;
+        return new Vector3(x, y, z) + 0 * originPosition;
     }
 
     public Vector3 GetWorldPosition(Vector3 worldPosition)
@@ -40,18 +37,15 @@ public class BaseGrid
     }
     private void GetXYZ(Vector3 worldPosition, out int x, out int y, out int z)
     {
-        x = Mathf.FloorToInt((worldPosition - originPosition).x / cellsize);
-        y = Mathf.FloorToInt((worldPosition - originPosition).y / cellsize);
-        z = Mathf.FloorToInt((worldPosition - originPosition).z / cellsize);
+        x = Mathf.FloorToInt((worldPosition - originPosition).x);
+        y = Mathf.FloorToInt((worldPosition - originPosition).y);
+        z = Mathf.FloorToInt((worldPosition - originPosition).z);
 
-    }
+    }   
 
     public void SetValue(int x, int y, int z, GameObject value)
     {
-
-        //gridArray[x, y, z] = Instantiate(value, new Vector3(x, y, z), Quaternion.Euler(0f, 0f, 0f));
         gridArray[x, y, z] = value;
-
     }
     public void SetValue(Vector3 worldPosition, GameObject value)
     {
@@ -59,15 +53,14 @@ public class BaseGrid
         GetXYZ(worldPosition, out x, out y, out z);
         SetValue(x, y, z, value);
     }
-
-    public GameObject getGridarray(int x,int y, int z)
+    public void DeleteValue(int x, int y, int z)
     {
-        return gridArray[x, y, z];
+        gridArray[x, y, z] = null;
     }
-    public GameObject getGridarray(Vector3 worldPosition)
+    public void DeleteValue(Vector3 worldPosition)
     {
-        return gridArray[(int)worldPosition.x, (int)worldPosition.y, (int)worldPosition.z];
+        int x, y, z;
+        GetXYZ(worldPosition, out x, out y, out z);
+        DeleteValue(x, y, z);
     }
-
-
 }
