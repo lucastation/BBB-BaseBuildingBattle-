@@ -12,7 +12,6 @@ public class PlayerInputAlpha : MonoBehaviour
     public LayerMask mask;
     int LastPosX, LastPosY, LastPosZ;
     private int slotNumber = 0;
-    public Camera fpsCam;
 
     private BaseGrid homeGrid;
 
@@ -23,9 +22,9 @@ public class PlayerInputAlpha : MonoBehaviour
 
     void Update()
     {
-        //var ray = new Ray(this.transform.position, this.transform.forward);
-        var ray = new Ray(fpsCam.transform.position, fpsCam.transform.forward);
+        var ray = new Ray(this.transform.position, this.transform.forward);
         RaycastHit hit;
+
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
@@ -87,7 +86,7 @@ public class PlayerInputAlpha : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
-                //homeGrid.DeleteValue(ObjToMove.position);
+                // homeGrid.DeleteValue(ObjToMove.position);
                 // Destroy(hit.collider.gameObject);
                 Block target = hit.transform.GetComponent<Block>();
 

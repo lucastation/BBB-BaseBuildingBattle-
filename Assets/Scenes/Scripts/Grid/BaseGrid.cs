@@ -29,6 +29,8 @@ public class BaseGrid
     {
         return GetWorldPosition((int)worldPosition.x, (int)worldPosition.y, (int)worldPosition.z);
     }
+
+
     private void GetXYZ(Vector3 worldPosition, out int x, out int y, out int z)
     {
         x = Mathf.FloorToInt((worldPosition - originPosition).x);

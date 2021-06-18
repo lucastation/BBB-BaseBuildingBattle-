@@ -10,6 +10,8 @@ public class PlayerScript : MonoBehaviour
     internal PlayerMovement movementScript;
     [SerializeField]
     internal PlayerCollision collisionScript;
+    [SerializeField]
+    internal PlayerRayCasting rayCastScript;
 
 
     private void Awake()

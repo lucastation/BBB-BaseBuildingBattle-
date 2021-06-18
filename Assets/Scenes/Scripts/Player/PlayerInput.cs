@@ -20,5 +20,6 @@ public class PlayerInput : MonoBehaviour
             playerScript.movementScript.Jump();
         }
 
+
     }
 }
